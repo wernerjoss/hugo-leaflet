@@ -5,7 +5,8 @@
 	<!--Populate with marker--> 
 	<script>
 		//Define zoom level with default if not defined
-		let zoom = {{ if .Get "zoom" }}{{ int (.Get "zoom") }}{{ else }}13{{ end }};
+		// note: let zoom ... will NOT work - gives Error 'Redeclaration of zoom' if more than one Maps in same page ! 9.9.24
+		zoom = {{ if .Get "zoom" }}{{ int (.Get "zoom") }}{{ else }}13{{ end }};
 		//Create Map
 			var mymap = L.map('mapid{{.Get "mapLon" }}').setView([{{.Get "mapLat" }}, {{.Get "mapLon" }}], zoom);
 		//Add tiles
